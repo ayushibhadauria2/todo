@@ -102,7 +102,10 @@ const AddTodo = () => {
                 BACK
               </button>
             </form>
-            {todos.length === 0 ? (
+            
+          </>
+        )}
+        {todos.length == 0 ? (
               <h1 className="text-3xl font-serif font-normal text-cyan-800 flex justify-center ">
                 No todos in your bucket
               </h1>
@@ -112,8 +115,6 @@ const AddTodo = () => {
                 editFormVisibility={editFormVisibility}
               />
             )}
-          </>
-        )}
       </div>
     </div>
   );

@@ -1,28 +1,39 @@
-// import React from "react";
-// import { render, fireEvent } from "@testing-library/react";
-// import "@testing-library/jest-dom/extend-expect";
-// import {legacy_createStore as createStore } from "redux";
-// import {Store as store} from "./store";
-// import rootReducer from "./reducers";
+import React from 'react';
+import {render as rtlRender, screen} from '@testing-library/react';
+import store from './store';
+import {Provider} from 'react-redux';
+import AddTodo from './components/AddTodo/AddTodo';
+import { addTodo } from './actions';
+import { MdTask } from 'react-icons/md';
 
-// describe("GIVEN a Redux store created from the rootReducer", () => {
-//   let store;
-//   beforeEach(() => {
-//     store = createStore(rootReducer);
-//   });
 
-//   describe("WHEN this is passed to Root", () => {
-//     let getByLabelText, getByText, container;
-//     beforeEach(() => {
-//       ({ getByLabelText, getByText, container } = render(
-//         <store store={store} />
-//       ));
-//     });
+const render = component => rtlRender(
+    <Provider store = {store}>
+        {component}
+    </Provider>
+)
 
-//     test("THEN there are no todos shown", () => {
-//       expect(container).toHaveTextContent(/no todos in your bucket/i);
-//     });
+const task = "learn next js"
 
-    
-//   });
-// });
+describe('AddTodo', () => {
+    test('add button ', () =>{
+        render(<AddTodo />)
+        expect(screen.getByText('ADD')).toBeInTheDocument()
+    })
+})
+
+describe('Add a Todo', () => {
+    test('should add a todo', () =>{
+        const todo = task
+        const expectedaction = {
+            type: 'ADD_TODO',
+            payload: {
+                "task": "learn next js"
+            },
+        }
+        expect(addTodo(todo)).toEqual(expectedaction)
+    })
+
+})
+
+
