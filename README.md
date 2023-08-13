@@ -14,7 +14,7 @@ Features
 - Redux store to manage state effectively.
 
 Installation
-- Clone the repository: git clone https://github.com/your-username/react-redux-todo-app.git
+- Clone the repository: git clone https://github.com/ayushibhadauria2/todo
 - Navigate to the project directory: cd react-redux-todo-app
 - Install dependencies: 
     npm install
