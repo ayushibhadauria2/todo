@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineDelete } from "react-icons/md";
 import { AiOutlineEdit, AiOutlineCheck } from "react-icons/ai";
 
-import { completedTodo, removeTodo } from "../../actions";
+import { completedTodo, removeTodo } from "../actions/todoActions";
 
 const DisplayTodo = ({ handleEditClick, editFormVisibility }) => {
   const todos = useSelector((state) => state.todoReducer.todos);

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import DisplayTodo from "../DisplayTodo/DisplayTodo";
-import { addTodo, handleEditSubmit } from "../../actions";
+import DisplayTodo from "./DisplayTodo";
+import { addTodo, handleEditSubmit } from "../actions/todoActions";
 
 const AddTodo = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const AddTodo = () => {
   
   const handleEditClick = (todo) => {
     setEditFormVisibility(true);
-    setEditTodo(todo);
+    setEditTodo(todo)
   };
 
   const cancelUpdate = () => {
@@ -41,22 +41,24 @@ const AddTodo = () => {
   };
 
   return (
-    <div className="h-screen w-screen   bg-gradient-to-r from-slate-200 to-red-200 ">
-      <h1 className="text-4xl font-serif font-semibold text-black flex items-center justify-center h-32 ">
-        {" "}
-        TODO APP{" "}
+    <div className=" w-screen min-h-screen bg-contain  bg-gradient-to-b from-slate-100 to-gray-400 via-sky-200">
+      <div className="w-full h-32 items-center flex justify-center">
+      <h1 className="text-4xl font-serif font-semibold text-black">
+        TODO APP
       </h1>
+      </div>
 
-      <div className="flex justify-center items-center h-20">
+     
         {editFormVisibility === false ? (
           <>
-            <form className="form-group custom-form" onSubmit={handleSubmit}>
-              <div className="input-and-btn">
+            <form onSubmit={handleSubmit}>
+              <div className="h-28 flex justify-center items-center">
                 <input
                   type="text"
                   className="text-black w-1/3 bg-white h-10 rounded-lg p-4 shadow-md shadow-zinc-800"
                   required
                   value={todoValue}
+                  placeholder="Add a todo..."
                   onChange={(e) => setTodoValue(e.target.value)}
                 />
                 <button
@@ -68,8 +70,8 @@ const AddTodo = () => {
               </div>
             </form>
 
-            {todos.length === 0 ? (
-              <h1 className="text-3xl font-serif font-normal text-cyan-800 flex justify-center ">
+            {todos.todos.length === 0 ? (
+              <h1 className="text-3xl font-serif font-normal text-cyan-900 flex justify-center ">
                 No todos in your bucket
               </h1>
             ) : (
@@ -81,32 +83,33 @@ const AddTodo = () => {
           </>
         ) : (
           <>
-            <form className="form-group custom-form" onSubmit={editSubmit}>
-              <div>
+            <form onSubmit={editSubmit}>
+            <div className="h-28 flex justify-center mx-3 items-center">
                 <input
                   type="text"
                   className="text-black w-1/3 bg-white h-10 rounded-lg p-4 shadow-md shadow-zinc-800"
                   required
                   value={editValue || ""}
+                  placeholder="Add a todo..."
                   onChange={(e) => setEditValue(e.target.value)}
                 />
-                <button type="submit" className="btn btn-secondary btn-md">
+                <button type="submit" className="w-20 bg-gray-950 text-white rounded-lg h-10 mx-2 shadow-md shadow-black hover:scale-105 duration-500"
+>
                   UPDATE
                 </button>
-              </div>
-              <button
+                 <button
                 type="button"
-                className="w-20 bg-gray-950 text-white rounded-lg h-10 mx-2 shadow-md shadow-black hover:text-gray-50 hover:bg-slate-950"
+                className="w-20 bg-gray-950 text-white rounded-lg h-10 mx-2 shadow-md hover:scale-105 duration-500"
                 onClick={cancelUpdate}
               >
                 BACK
               </button>
+              </div>
+             
             </form>
-            
-          </>
-        )}
-        {todos.length == 0 ? (
-              <h1 className="text-3xl font-serif font-normal text-cyan-800 flex justify-center ">
+            {todos.todos.length == 0 ? (
+              <h1 className="text-3xl font-serif font-normal text-cyan-800 flex justify-center 
+              ">
                 No todos in your bucket
               </h1>
             ) : (
@@ -115,8 +118,11 @@ const AddTodo = () => {
                 editFormVisibility={editFormVisibility}
               />
             )}
+          </>
+          
+        )}
+        
       </div>
-    </div>
   );
 };
 

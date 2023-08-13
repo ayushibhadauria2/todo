@@ -1,4 +1,4 @@
-import { ADD_TODO, REMOVE_TODO, UPDATE_TODO, MARK_COMPLETED } from "../constants"
+import { ADD_TODO, REMOVE_TODO, UPDATE_TODO, MARK_COMPLETED } from "./actionTypes"
 
 export const addTodo = (data) => {
     return {

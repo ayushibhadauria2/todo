@@ -1,4 +1,5 @@
-import AddTodo from './components/AddTodo/AddTodo';
+import AddTodo from "./components/AddTodo";
+
 
 function App() {
   return (

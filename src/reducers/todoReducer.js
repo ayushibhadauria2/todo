@@ -3,7 +3,7 @@ import {
   REMOVE_TODO,
   MARK_COMPLETED,
   UPDATE_TODO,
-} from "../constants";
+} from "../actions/actionTypes";
 
 const initialState = {
   todos: [],

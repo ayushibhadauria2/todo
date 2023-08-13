@@ -1,9 +1,9 @@
 import React from 'react';
 import {render as rtlRender, screen} from '@testing-library/react';
-import store from './store';
+import store from './store/configureStore';
 import {Provider} from 'react-redux';
-import AddTodo from './components/AddTodo/AddTodo';
-import { addTodo } from './actions';
+import AddTodo from './components/AddTodo';
+import { addTodo } from './actions/todoActions';
 import { MdTask } from 'react-icons/md';
 
 
